@@ -21,14 +21,15 @@ The Tenire Structure is a sophisticated component-based system designed for high
 ### Concurrency
 3. [Concurrency](concurrency/)
    - [Novel Management Architecture](concurrency/system_architecture.md)
+   - [Event Loop](concurrency/event_loop.md)
    - [Paper](concurrency/concurrency.md)
 
 ### RAG
 4. [RAG](rag/)
    - [Overview](rag/overview.md)
-   - [Docustore](rag/docustore.md)
-   - [Retriever](rag/retriever.md)
-   - [Embeddings](rag/embeddings.md)
+   - [Docustore](rag/pipeline/docustore.md)
+   - [Retriever](rag/pipeline/retriever.md)
+   - [Embeddings](rag/pipeline/embeddings.md)
    - [Paper](rag/rag_paper.md)
 
 ## Getting Started
