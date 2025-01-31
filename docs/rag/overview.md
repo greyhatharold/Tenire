@@ -294,7 +294,3 @@ class AgentDataConfig:
 - API enhancement
 - Monitoring expansion
 - Synchronization optimization
-
-## Additional Resources
-
-For a comprehensive understanding of the entire Tenire Framework and its components, please refer to our [Framework Glossary](../glossary.md). The glossary provides detailed explanations of core concepts, architecture components, and system relationships that complement this RAG system documentation. 

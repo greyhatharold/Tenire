@@ -13,7 +13,6 @@ The Tenire Structure is a sophisticated component-based system designed for high
 ### Architecture
 2. [Architecture](architecture/)
    - [Overview](architecture/overview.md)
-   - [Diagrams](architecture/diagrams/diagrams.md)
    - [Initialization Flow](architecture/initialization/flow.md)
    - [System Architecture Paper](architecture/system_architecture_paper.md)
    - [Components](architecture/components/overview.md)
