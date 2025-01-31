@@ -1,0 +1,18 @@
+{
+  "hits": 0,
+  "misses": 0,
+  "evictions": 0,
+  "size": 0,
+  "hit_ratio": 0.0,
+  "avg_get_time": 0.0,
+  "last_cleanup": "2025-01-28T17:14:35.405022",
+  "memory_usage": 0,
+  "disk_usage": 0,
+  "num_keys": 0,
+  "operations": {
+    "get": 0,
+    "set": 0,
+    "delete": 0,
+    "clear": 0
+  }
+}
