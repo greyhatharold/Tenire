@@ -32,5 +32,9 @@ The Tenire Structure is a sophisticated component-based system designed for high
    - [Embeddings](rag/pipeline/embeddings.md)
    - [Paper](rag/rag_paper.md)
 
+### Public Services
+5. [Public Services](public_services/)
+   - [Hospital](public_services/hospital/overview.md)
+
 ## Getting Started
 To understand the framework, start with the [Component System Overview](architecture/components/overview.md) and then follow the [Initialization Flow](architecture/initialization/flow.md) documentation.
