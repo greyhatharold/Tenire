@@ -30,7 +30,7 @@ The Tenire Structure is a sophisticated component-based system designed for high
    - [Docustore](rag/docustore.md)
    - [Retriever](rag/retriever.md)
    - [Embeddings](rag/embeddings.md)
-   - [Paper](rag/rag.md)
+   - [Paper](rag/rag_paper.md)
 
 ## Getting Started
 To understand the framework, start with the [Component System Overview](architecture/components/overview.md) and then follow the [Initialization Flow](architecture/initialization/flow.md) documentation.
