@@ -1,96 +1,101 @@
 graph TB
     %% Core Components
-    ComponentRegistry[ComponentRegistry]
-    ComponentScheduler[ComponentScheduler]
-    DependencyGraph[DependencyGraph]
-    SubgraphManager[SubgraphManager]
+    ComponentRegistry[Component Registry]
+    ComponentScheduler[Component Scheduler]
+    DependencyGraph[Dependency Graph]
+    SubgraphManager[Subgraph Manager]
     
     %% Data Classes
-    ComponentMetadata[ComponentMetadata]
-    ComponentType[ComponentType]
-    InitializationTask[InitializationTask]
-    DependencyNode[DependencyNode]
+    ComponentMetadata[Component Metadata]
+    ComponentType[Component Type]
+    InitializationTask[Initialization Task]
+    DependencyNode[Dependency Node]
     Subgraph[Subgraph]
     
     %% Enums and States
-    DependencyState[DependencyState]
-    SubgraphType[SubgraphType]
-    InitializationStatus[InitializationStatus]
+    DependencyState[Dependency State]
+    SubgraphType[Subgraph Type]
+    InitializationStatus[Initialization Status]
     
     %% Helper Classes
-    ComponentLocks[ComponentLocks]
-    DependencyLocks[DependencyLocks]
-    BatchGroup[BatchGroup]
-    SubgraphMetadata[SubgraphMetadata]
+    ComponentLocks[Component Locks]
+    DependencyLocks[Dependency Locks]
+    BatchGroup[Batch Group]
+    SubgraphMetadata[Subgraph Metadata]
 
-    %% Relationships
-    ComponentRegistry --> ComponentMetadata
-    ComponentRegistry --> ComponentType
-    ComponentRegistry --> InitializationTask
-    ComponentRegistry --> ComponentLocks
-    ComponentRegistry --> BatchGroup
+    %% Core Component Relationships
+    ComponentRegistry --> |manages| ComponentMetadata
+    ComponentRegistry --> |defines| ComponentType
+    ComponentRegistry --> |creates| InitializationTask
+    ComponentRegistry --> |uses| ComponentLocks
+    ComponentRegistry --> |organizes| BatchGroup
 
-    ComponentScheduler --> InitializationStatus
-    ComponentScheduler --> InitializationTask
+    ComponentScheduler --> |tracks| InitializationStatus
+    ComponentScheduler --> |executes| InitializationTask
 
-    DependencyGraph --> DependencyNode
-    DependencyGraph --> DependencyState
-    DependencyGraph --> DependencyLocks
-    DependencyGraph --> InitializationTask
+    DependencyGraph --> |contains| DependencyNode
+    DependencyGraph --> |manages| DependencyState
+    DependencyGraph --> |uses| DependencyLocks
+    DependencyGraph --> |schedules| InitializationTask
 
-    SubgraphManager --> Subgraph
-    SubgraphManager --> SubgraphType
-    SubgraphManager --> SubgraphMetadata
-    SubgraphManager --> DependencyGraph
+    SubgraphManager --> |manages| Subgraph
+    SubgraphManager --> |defines| SubgraphType
+    SubgraphManager --> |uses| SubgraphMetadata
+    SubgraphManager --> |depends on| DependencyGraph
 
-    Subgraph --> DependencyNode
-    Subgraph --> DependencyState
-    Subgraph --> DependencyLocks
+    %% Subgraph Relationships
+    Subgraph --> |contains| DependencyNode
+    Subgraph --> |tracks| DependencyState
+    Subgraph --> |uses| DependencyLocks
 
-    %% Dependencies
-    ComponentRegistry -.-> DependencyGraph
-    ComponentRegistry -.-> ComponentScheduler
-    SubgraphManager -.-> DependencyGraph
-    Subgraph -.-> DependencyGraph
+    %% System Dependencies
+    ComponentRegistry -.->|depends on| DependencyGraph
+    ComponentRegistry -.->|uses| ComponentScheduler
+    SubgraphManager -.->|integrates with| DependencyGraph
+    Subgraph -.->|extends| DependencyGraph
 
-    %% Metadata Classes
-    ComponentMetadata --> ComponentType
-    SubgraphMetadata --> SubgraphType
+    %% Metadata Relationships
+    ComponentMetadata -->|typed by| ComponentType
+    SubgraphMetadata -->|typed by| SubgraphType
 
-    %% Style
-    classDef core fill:#f9f,stroke:#333,stroke-width:2px
-    classDef dataClass fill:#bbf,stroke:#333
-    classDef enum fill:#bfb,stroke:#333
-    classDef helper fill:#fbb,stroke:#333
+    %% Styling
+    classDef core fill:#f9f,stroke:#333,stroke-width:2px,rx:5px
+    classDef dataClass fill:#bbf,stroke:#333,rx:5px
+    classDef enum fill:#bfb,stroke:#333,rx:5px
+    classDef helper fill:#fbb,stroke:#333,rx:5px
 
     class ComponentRegistry,ComponentScheduler,DependencyGraph,SubgraphManager core
     class ComponentMetadata,InitializationTask,DependencyNode,Subgraph dataClass
     class ComponentType,DependencyState,SubgraphType,InitializationStatus enum
     class ComponentLocks,DependencyLocks,BatchGroup,SubgraphMetadata helper
 
-    %% Labels
-    subgraph Core Components
+    %% Subgraphs for Visual Organization
+    subgraph Core ["Core Components"]
+        style Core fill:#f9f9f9,stroke:#999
         ComponentRegistry
         ComponentScheduler
         DependencyGraph
         SubgraphManager
     end
 
-    subgraph Data Classes
+    subgraph Data ["Data Classes"]
+        style Data fill:#f0f0ff,stroke:#999
         ComponentMetadata
         InitializationTask
         DependencyNode
         Subgraph
     end
 
-    subgraph Enums and States
+    subgraph Enums ["Enums and States"]
+        style Enums fill:#f0fff0,stroke:#999
         ComponentType
         DependencyState
         SubgraphType
         InitializationStatus
     end
 
-    subgraph Helper Classes
+    subgraph Helpers ["Helper Classes"]
+        style Helpers fill:#fff0f0,stroke:#999
         ComponentLocks
         DependencyLocks
         BatchGroup

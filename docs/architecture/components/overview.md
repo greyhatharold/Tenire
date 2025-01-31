@@ -1,160 +1,255 @@
 # Component System Overview
 
-## Architecture Overview
+## Introduction
 
-The Tenire Framework implements a sophisticated component-based architecture designed for high concurrency, robust dependency management, and flexible component lifecycle handling. The system is built around several key principles:
+The Tenire Framework's component system represents a sophisticated approach to managing complex software systems through a hierarchical, dependency-aware component architecture. This system integrates deeply with the framework's concurrency management, resource optimization, and health monitoring subsystems to provide a robust foundation for building scalable applications.
 
-### 1. Hierarchical Organization
-- **Subgraphs**: Components are organized into logical subgraphs (e.g., Core, Data, GUI)
-- **Dependency Management**: Clear dependency hierarchies between components and subgraphs
-- **Initialization Order**: Controlled, priority-based initialization sequence
+## Core Architecture
 
-### 2. Component Lifecycle
-- **Registration**: Components register with metadata, dependencies, and health checks
-- **Initialization**: Managed by the ComponentScheduler with proper dependency resolution
-- **Runtime**: Components are managed by their respective subgraphs
-- **Cleanup**: Coordinated shutdown with proper cleanup order
+### Component Registry
 
-### 3. Core Systems
+The component registry (`ComponentRegistry`) serves as the central hub for managing all system components. It provides:
 
-#### Event Loop Manager (`event_loop_manager`)
-- Central management of event loops across processes
-- Thread-safe event loop access and cleanup
-- Process-aware loop management
-- Qt-specific event loop handling
+- **Lifecycle Management**: Comprehensive control over component initialization, operation, and cleanup
+- **Dependency Resolution**: Sophisticated dependency tracking and resolution using a directed acyclic graph
+- **Health Monitoring**: Integration with the health monitoring system for component status tracking
+- **Resource Management**: Efficient resource allocation and deallocation through the compactor
+- **Concurrency Control**: Deep integration with the concurrency management system
 
-#### Component Scheduler (`component_scheduler`)
-- Manages component initialization sequence
-- Handles concurrent initialization of independent components
-- Implements retry mechanisms with exponential backoff
-- Integrates with health monitoring system
+### Component Types
 
-#### Dependency Graph (`dependency_graph`)
-- Manages component dependencies and initialization order
-- Detects and prevents dependency cycles
-- Tracks component states and relationships
-- Enables subgraph isolation and management
+Components are categorized into distinct types (`ComponentType`) that define their role and behavior:
 
-#### Concurrency Manager (`concurrency_manager`)
-- Coordinates all concurrent operations
-- Manages thread pools and async tasks
-- Handles GUI process integration
-- Provides browser integration capabilities
+- `CORE`: Essential system components
+- `DATA`: Data processing and management components
+- `GUI`: User interface components
+- `INTEGRATION`: External system integration components
+- `ORGANIZER`: System organization and management components
+- `PROFESSIONAL`: Domain-specific professional components
+- `PUBLIC_SERVICE`: Public-facing service components
+- `RAG`: Retrieval-Augmented Generation components
+- `SERVICER`: Service provider components
+- `STRUCTURE`: Structural system components
+- `UTILITY`: Utility and helper components
 
-#### Component Registry (`component_registry`)
-- Central registration point for all components
-- Manages component metadata and relationships
-- Integrates with health monitoring
-- Coordinates component cleanup
+### Component Scheduler
 
-## Component Types
+The component scheduler (`ComponentScheduler`) manages component initialization and execution with:
 
-Components are categorized into the following types (`ComponentType`):
-
-1. **CORE**: Essential system components (e.g., event loop, signal manager)
-2. **DATA**: Data management components (e.g., caching, storage)
-3. **GUI**: User interface components (e.g., windows, widgets)
-4. **INTEGRATION**: External system integrations (e.g., APIs, databases)
-5. **ORGANIZER**: System organization components (e.g., schedulers, monitors)
-6. **PROFESSIONAL**: Professional-grade components (e.g., trading, analysis)
-7. **PUBLIC_SERVICE**: Public-facing services (e.g., health monitoring, metrics)
-8. **RAG**: Retrieval-augmented generation components
-9. **SERVICER**: Service provider components (e.g., signal handling)
-10. **STRUCTURE**: Structural components (e.g., dependency management)
-11. **UTILITY**: Utility components (e.g., logging, configuration)
-
-## Component Metadata
-
-Each component is registered with comprehensive metadata:
-
-```python
-@dataclass
-class ComponentMetadata:
-    type: ComponentType              # Component category
-    provides: List[str]             # Capabilities provided
-    dependencies: Set[str]          # Required dependencies
-    priority: int                   # Initialization priority
-    health_checks: Optional[Dict]   # Health monitoring functions
-    timing_config: Optional[Config] # Timing and scheduling settings
-    cleanup_priority: int           # Cleanup order priority
-    tags: Set[str]                 # Component categorization
-    is_critical: bool              # Critical system component flag
-```
-
-## Initialization Flow
-
-1. **Registration Phase**
-   - Components register with the ComponentRegistry
-   - Metadata and dependencies are validated
-   - Health checks are registered
-
-2. **Dependency Resolution**
-   - DependencyGraph builds initialization order
-   - Cycles are detected and prevented
-   - Subgraphs are organized
-
-3. **Initialization**
-   - Critical core components initialized first
-   - Parallel initialization of independent components
-   - Health checks verified
-   - Timing configurations applied
-
-4. **Runtime Management**
-   - Components managed by respective subgraphs
-   - Health monitoring active
-   - Event loops and concurrency managed
-
-5. **Cleanup Phase**
-   - Reverse priority-based cleanup
-   - Resource release coordination
-   - Proper shutdown sequence
+- **Priority-based Scheduling**: Components are initialized based on priority and dependencies
+- **Batch Processing**: Optimized batch initialization of independent components
+- **Retry Mechanisms**: Sophisticated retry logic with exponential backoff
+- **Health Integration**: Deep integration with the health monitoring system
+- **Resource Awareness**: Resource-aware scheduling and execution
 
 ## Integration Points
 
-The component system integrates through several mechanisms:
+### Concurrency Management
 
-### 1. Signal System
-- Component state changes
-- Health status updates
-- System events
-- Cross-component communication
+The component system deeply integrates with the concurrency management architecture through:
 
-### 2. Health Monitoring
-- Component health checks
-- System diagnostics
-- Performance monitoring
-- Automated recovery
+1. **Event Loop Integration**
+   - Component-specific event loops
+   - Coordinated async operations
+   - Resource-aware scheduling
 
-### 3. Configuration
-- Component configuration
-- System settings
-- Environment management
-- Dynamic reconfiguration
+2. **Thread Pool Management**
+   - Dynamic thread allocation
+   - Priority-based execution
+   - Resource limiting
 
-## Best Practices
+3. **Process Management**
+   - Cross-process component coordination
+   - Resource isolation
+   - State synchronization
 
-1. **Component Design**
-   - Clear single responsibility
-   - Explicit dependencies
-   - Health check implementation
-   - Proper cleanup handling
+### Resource Management
 
-2. **Dependency Management**
-   - Minimal dependencies
-   - Explicit dependency declaration
-   - Proper cleanup registration
-   - Health check integration
+Components integrate with the resource management system via:
 
-3. **Error Handling**
-   - Graceful degradation
-   - Retry mechanisms
-   - Error isolation
-   - Recovery procedures
+1. **Memory Management**
+   - Tiered caching system
+   - Memory-aware operations
+   - Cache optimization
 
-## Next Steps
+2. **Resource Tracking**
+   - Component-level resource monitoring
+   - System-wide resource tracking
+   - Dynamic resource allocation
 
-To understand the implementation details:
+### Health Monitoring
 
-1. [Initialization Flow](../initialization/flow.md)
-2. [Component Relationships](../relationships/overview.md)
-3. [System Diagrams](../diagrams/README.md) 
+The health monitoring integration provides:
+
+1. **Component Health**
+   - Individual component health checks
+   - Dependency health tracking
+   - Resource health monitoring
+
+2. **System Health**
+   - Overall system health assessment
+   - Resource utilization monitoring
+   - Performance tracking
+
+## Pipeline Management
+
+### Pipeline Registry
+
+The pipeline registry (`PipelineRegistry`) manages component pipelines with:
+
+1. **Pipeline Organization**
+   - Logical grouping of components
+   - Pipeline-level resource management
+   - Cross-pipeline coordination
+
+2. **Pipeline Types**
+   - Core System Pipeline
+   - Data Pipeline
+   - GUI Pipeline
+   - Integration Pipeline
+   - Professional Pipeline
+   - Public Service Pipeline
+   - RAG Pipeline
+   - Servicer Pipeline
+
+### Pipeline Features
+
+Key pipeline features include:
+
+1. **Initialization**
+   - Dependency-aware startup
+   - Resource allocation
+   - State initialization
+
+2. **Operation**
+   - Resource monitoring
+   - Health tracking
+   - Performance optimization
+
+3. **Cleanup**
+   - Resource deallocation
+   - State cleanup
+   - Error recovery
+
+## Component Lifecycle
+
+### Initialization
+
+Components follow a structured initialization process:
+
+1. **Registration**
+   - Component metadata registration
+   - Dependency declaration
+   - Resource allocation
+
+2. **Initialization**
+   - Priority-based initialization
+   - Dependency resolution
+   - Resource setup
+
+3. **Validation**
+   - Health check execution
+   - Resource validation
+   - State verification
+
+### Operation
+
+During operation, components are managed through:
+
+1. **Resource Management**
+   - Dynamic resource allocation
+   - Cache optimization
+   - Memory management
+
+2. **Health Monitoring**
+   - Continuous health checks
+   - Performance monitoring
+   - Error detection
+
+3. **State Management**
+   - State tracking
+   - Dependency coordination
+   - Resource tracking
+
+### Cleanup
+
+Component cleanup involves:
+
+1. **Resource Cleanup**
+   - Resource deallocation
+   - Cache cleanup
+   - Memory release
+
+2. **State Cleanup**
+   - State reset
+   - Dependency cleanup
+   - Error recovery
+
+## Error Handling
+
+The component system implements comprehensive error handling:
+
+1. **Component-Level**
+   - Individual component recovery
+   - Resource cleanup
+   - State restoration
+
+2. **Pipeline-Level**
+   - Pipeline recovery
+   - Resource reallocation
+   - State synchronization
+
+3. **System-Level**
+   - System recovery
+   - Resource redistribution
+   - State coordination
+
+## Performance Optimization
+
+Performance is optimized through:
+
+1. **Resource Management**
+   - Dynamic resource allocation
+   - Cache optimization
+   - Memory management
+
+2. **Concurrency Control**
+   - Thread pool optimization
+   - Event loop management
+   - Process coordination
+
+3. **Batch Processing**
+   - Optimized initialization
+   - Resource-aware batching
+   - Priority-based execution
+
+## Future Directions
+
+The component system is designed for future expansion in:
+
+1. **Machine Learning Integration**
+   - Resource prediction
+   - Performance optimization
+   - Error prediction
+
+2. **Cloud Integration**
+   - Distributed components
+   - Cloud resource management
+   - State synchronization
+
+3. **Enhanced Monitoring**
+   - Advanced metrics
+   - Predictive monitoring
+   - Performance tracking
+
+## Conclusion
+
+The Tenire Framework's component system provides a robust foundation for building complex, scalable applications through:
+
+- Sophisticated component management
+- Deep concurrency integration
+- Comprehensive resource management
+- Advanced health monitoring
+- Efficient pipeline organization
+
+This architecture enables the development of reliable, performant applications while maintaining system stability and resource efficiency.

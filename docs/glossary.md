@@ -5,30 +5,32 @@ The Tenire Structure is a sophisticated component-based system designed for high
 
 ## Table of Contents
 
-### Architecture
-- [Component System Overview](architecture/components/overview.md)
-- [Initialization Flow](architecture/initialization/flow.md)
-- [Component Relationships](architecture/relationships/overview.md)
-- [System Diagrams](architecture/diagrams/README.md)
-- [Architecture Paper](architecture/system_architecture_paper.md)
-
 ### Core Systems
-1. [Event Loop Management](architecture/components/event_loop.md)
-2. [Component Scheduling](architecture/components/scheduling.md)
-3. [Dependency Management](architecture/components/dependencies.md)
-4. [Concurrency Control](architecture/components/concurrency.md)
-5. [Pipeline Management](architecture/components/pipelines.md)
+1. [RAG System Overview](rag/overview.md)
+2. [Concurrency](concurrency/system_architecture.md)
+3. [Architecture](architecture/system_architecture.md)
 
-### Key Concepts
-- [Component Lifecycle](architecture/components/lifecycle.md)
-- [Dependency Resolution](architecture/components/dependency_resolution.md)
-- [Error Handling & Recovery](architecture/components/error_handling.md)
-- [Resource Management](architecture/components/resource_management.md)
+### Architecture
+2. [Architecture](architecture/)
+   - [Overview](architecture/overview.md)
+   - [Diagrams](architecture/diagrams/diagrams.md)
+   - [Initialization Flow](architecture/initialization/flow.md)
+   - [System Architecture Paper](architecture/system_architecture_paper.md)
+   - [Components](architecture/components/overview.md)
+   - [Paper](architecture/system_architecture_paper.md)
 
-### Best Practices
-- [Component Design Guidelines](architecture/components/design_guidelines.md)
-- [Dependency Management Best Practices](architecture/components/dependency_best_practices.md)
-- [Error Handling Strategies](architecture/components/error_strategies.md)
+### Concurrency
+3. [Concurrency](concurrency/)
+   - [Novel Management Architecture](concurrency/system_architecture.md)
+   - [Paper](concurrency/concurrency.md)
+
+### RAG
+4. [RAG](rag/)
+   - [Overview](rag/overview.md)
+   - [Docustore](rag/docustore.md)
+   - [Retriever](rag/retriever.md)
+   - [Embeddings](rag/embeddings.md)
+   - [Paper](rag/rag.md)
 
 ## Getting Started
-To understand the framework, start with the [Component System Overview](architecture/components/overview.md) and then follow the [Initialization Flow](architecture/initialization/flow.md) documentation. 
+To understand the framework, start with the [Component System Overview](architecture/components/overview.md) and then follow the [Initialization Flow](architecture/initialization/flow.md) documentation.
