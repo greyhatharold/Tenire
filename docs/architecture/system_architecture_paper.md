@@ -109,16 +109,3 @@ Performance optimization is achieved through:
 This architectural approach provides a robust solution for managing complex software pipelines through its unique integration of component management and concurrency control. The system's flexibility and scalability make it particularly suitable for modern software applications requiring sophisticated pipeline management.
 
 The architecture's strength lies in its ability to maintain system stability while handling complex concurrent operations, making it an effective solution for large-scale software systems requiring reliable pipeline management.
-
-## References
-
-1. Tenire Framework Documentation
-   - Component System Overview (`docs/architecture/components/overview.md`)
-   - System Diagrams (`docs/architecture/diagrams/README.md`)
-   - Initialization Flow Documentation
-   - Component Relationships Documentation
-
-2. Source Code References
-   - Component Registry Implementation (`src/tenire/structure/component_registry.py`)
-   - Concurrency Manager Implementation (`src/tenire/organizers/concurrency/concurrency_manager.py`)
-   - Dependency Graph Implementation (`src/tenire/structure/dependency_graph.py`) 

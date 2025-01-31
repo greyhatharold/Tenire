@@ -231,5 +231,3 @@ The Tenire concurrency system represents a state-of-the-art approach to managing
 - Adaptive resource management
 - Dynamic scaling
 - Modular architecture
-
-For more information, please refer to our [API documentation](../api/concurrency.md) or [contribution guidelines](../contributing.md). 
