@@ -351,18 +351,3 @@ Core functionalities of the Retriever include:
 - **Scalable Pipeline Architecture**: Designed to handle increasing query volumes and data scales without sacrificing performance.
 
 These core components collectively enable the RAG architecture to deliver robust, efficient, and accurate data analysis and retrieval capabilities tailored to the specialized needs of the gambling industry.
-
-# References to Documentation
-
-For a more detailed understanding of each component, refer to the respective documentation files:
-
-- [`@docustore.py`](src/tenire/rag/docustore.py)
-- [`@docustore.md`](docs/rag/docustore.md)
-- [`@embeddings.py`](src/tenire/rag/embeddings.py)
-- [`@embeddings.md`](docs/rag/embeddings.md)
-- [`@retriever.py`](src/tenire/rag/retriever.py)
-- [`@retriever.md`](docs/rag/retriever.md)
-These documents provide comprehensive insights into the design philosophies, implementation details, and operational guidelines for each module, ensuring that developers and stakeholders can fully leverage the system's capabilities.
-
-```
-
